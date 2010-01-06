@@ -33,10 +33,10 @@
 	  <%- if is_video_site(status.text) %>
 		<%= get_vid_embed(purgeurl(status.text)) %>
 	 	 <%- else %>
-			<div style="float:left; width:210px"><%= image_tag(create_weblink_img_url(purgeurl(status.text))) %></div>
-			<%- if extract_weblink_title(purgeurl(status.text)) %>
-			<div style="float:left">	 <%= extract_weblink_title(purgeurl(status.text)) %> 
-				</div><%- end %> 
+			<div class="info"><%= image_tag(create_weblink_img_url(purgeurl(status.text))) %></div>
+				<%- if extract_weblink_text(purgeurl(status.text)) %>
+				<div class="text">	 <%= extract_weblink_text(purgeurl(status.text)) %> 
+					</div><%- end %>
 		
 			
 	  	<%- end %>	

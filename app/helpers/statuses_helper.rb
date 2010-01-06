@@ -1,9 +1,8 @@
+#for Martins part
 require 'net/http'
 require 'uri'
 require 'youtube_g'
 require 'bitly'
-
-#for nokogiri
 require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
@@ -23,21 +22,20 @@ module StatusesHelper
 
 
 
+
+# here starts Martins part of the code...
+
+
   def purgeurl(statustext)
    url = isolate_link(statustext)
    purged_url = get_deshortened_url(url)
    purged_url
   end 
 
-
-
   def place_vid_emb(statustext)
     a = get_vid_embed(purged_url)
     a.to_s
   end
-
-
-
 
   def has_weblink(statustext)
     if statustext.match /(http:\/\/)/
@@ -49,9 +47,8 @@ module StatusesHelper
 
   #
   #
-  # -------------- after primary check
   #
-  # -------------- here is the video
+  # -------------- here the video methods
 
   def is_video_site(statustext)
     url = isolate_link(statustext)
@@ -73,18 +70,7 @@ module StatusesHelper
   end
 
   #
-  # -------------- here is the image
-
-  def is_img_site(statustext)
-    #works
-    theurl = get_deshortened_url(statustext).to_s
-    if theurl.match /(http:\/\/www\.youtube\.com\/watch\?v\=(\w*))/
-      TRUE
-    else
-      FALSE
-    end
-  end
-
+  # -------------- here the image methods (NOT YET DONE)
 
 
   #
@@ -94,10 +80,9 @@ module StatusesHelper
 
 
   #
-  # -------------- here is the URL
+  # -------------- here are the URL methods
 
 
-  # Purge for isolink
   def create_weblink_img_url(statustext)
     # creates URL to be placed in image tag for display of site preview
     url = statustext
@@ -112,7 +97,16 @@ module StatusesHelper
     imgurl
   end
 
-  # Purge for isolink
+  def extract_weblink_text(statustext)
+    url = statustext
+    doc = Nokogiri::HTML(open(url))
+    posts = doc.at_css('p')
+    t = posts.to_s
+    f = t.gsub(/<\/?[^>]*>/, "") 
+    g = f
+    g
+  end
+  
   def extract_weblink_title(statustext)
     url = statustext
     doc = Nokogiri::HTML(open(url))
@@ -121,7 +115,6 @@ module StatusesHelper
     weblink_title
   end
 
-  # Purge for isolink
   def extract_weblink_metasecr(statustext)
     weblink_metadescription = ""
     url = statustext
@@ -154,6 +147,11 @@ module StatusesHelper
   # -------------- end url
   #
 
+
+  #
+  # -------------- here are the other helper methods
+  
+  
   def get_deshortened_url(isourl)
     #works
     if is_shortened(isourl)
@@ -194,13 +192,6 @@ module StatusesHelper
     end
     expanded_url
   end
-
-
-
-
-
-
-
 
 
 end

@@ -4537,3 +4537,1110 @@ Rendered statuses/_status (1101.4ms)
 Rendered statuses/_status (1280.3ms)
 Rendered statuses/_pagination (0.6ms)
 Completed in 32035ms (View: 30917, DB: 0) | 200 OK [http://localhost/?page=3]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-01-05 23:49:18) [GET]
+  Parameters: {"action"=>"index", "controller"=>"statuses"}
+Rendering template within layouts/application
+Rendering /sessions/new (unauthorized)
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 1379ms (View: 164, DB: 0) | 401 Unauthorized [http://localhost/]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2010-01-05 23:49:24) [POST]
+  Parameters: {"x"=>"109", "y"=>"18", "action"=>"create", "authenticity_token"=>"SL3tN0huWIc5fAQTQfwnxoWGrhfu5a69MdX1CrjDxL4=", "controller"=>"sessions"}
+Redirected to http://twitter.com/oauth/authenticate?oauth_token=3Qb1zz3iSrEey3bm6gzVkN8SHuajxaBcfQ32y66A
+Completed in 731ms (DB: 0) | 302 Found [http://localhost/session]
+
+
+Processing SessionsController#finalize (for 127.0.0.1 at 2010-01-05 23:49:29) [GET]
+  Parameters: {"action"=>"finalize", "controller"=>"sessions", "oauth_token"=>"3Qb1zz3iSrEey3bm6gzVkN8SHuajxaBcfQ32y66A", "oauth_verifier"=>"TdQXIHvJFFf556FVwZgCGJLCrbGO8JejQjv67IV5Q"}
+  [4;36;1mUser Load (19.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."screen_name" = 'martinhuegli') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 1485ms (DB: 19) | 302 Found [http://localhost/session/finalize?oauth_token=3Qb1zz3iSrEey3bm6gzVkN8SHuajxaBcfQ32y66A&oauth_verifier=TdQXIHvJFFf556FVwZgCGJLCrbGO8JejQjv67IV5Q]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-01-05 23:49:30) [GET]
+  Parameters: {"action"=>"index", "controller"=>"statuses"}
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering statuses/index
+Rendered statuses/_status (1210.1ms)
+Rendered statuses/_status (3204.2ms)
+Rendered statuses/_status (2211.4ms)
+Rendered statuses/_status (6.6ms)
+Rendered statuses/_status (993.9ms)
+Rendered statuses/_status (589.5ms)
+
+ActionView::TemplateError (redirection forbidden: http://om.ly/dnFX -> https://www.openforum.com/idea-hub/topics/the-world/article/see-you-at-ces-guy-kawasaki?cid=email_articlefeed_articletitlelink&utm_source=OM&utm_medium=Twitter&utm_term=Alltop&utm_campaign=HolyKawToAlltop2010&utm_content=Alltop) on line #37 of app/views/statuses/_status.html.erb:
+34: 		<%= get_vid_embed(purgeurl(status.text)) %>
+35: 	 	 <%- else %>
+36: 			<div style="float:left; width:210px"><%= image_tag(create_weblink_img_url(purgeurl(status.text))) %></div>
+37: 			<%- if extract_weblink_title(purgeurl(status.text)) %>
+38: 			<div style="float:left">	 <%= extract_weblink_title(purgeurl(status.text)) %> 
+39: 				</div><%- end %> 
+40: 		
+
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:174:in `open_loop'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:132:in `open_uri'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:518:in `open'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:30:in `open'
+    app/helpers/statuses_helper.rb:118:in `extract_weblink_title'
+    app/views/statuses/_status.html.erb:37
+    app/views/statuses/index.html.erb:3
+    app/views/statuses/index.html.erb:2:in `each'
+    app/views/statuses/index.html.erb:2
+
+Rendered rescues/_trace (152.4ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing SessionsController#finalize (for 127.0.0.1 at 2010-01-05 23:49:40) [GET]
+  Parameters: {"action"=>"finalize", "controller"=>"sessions", "oauth_token"=>"3Qb1zz3iSrEey3bm6gzVkN8SHuajxaBcfQ32y66A", "oauth_verifier"=>"TdQXIHvJFFf556FVwZgCGJLCrbGO8JejQjv67IV5Q"}
+
+OAuth::Unauthorized (401 Unauthorized):
+  oauth (0.3.6) lib/oauth/consumer.rb:200:in `token_request'
+  oauth (0.3.6) lib/oauth/tokens/request_token.rb:18:in `get_access_token'
+  twitter (0.6.15) lib/twitter/oauth.rb:39:in `authorize_from_request'
+  app/controllers/sessions_controller.rb:20:in `finalize'
+
+Rendered rescues/_trace (38.8ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-01-05 23:50:20) [GET]
+  Parameters: {"action"=>"index", "controller"=>"statuses"}
+  [4;36;1mUser Load (28.1ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering statuses/index
+Rendered statuses/_status (1126.9ms)
+Rendered statuses/_status (3225.1ms)
+Rendered statuses/_status (2755.1ms)
+Rendered statuses/_status (5.1ms)
+Rendered statuses/_status (934.3ms)
+Rendered statuses/_status (491.6ms)
+
+ActionView::TemplateError (redirection forbidden: http://om.ly/dnFX -> https://www.openforum.com/idea-hub/topics/the-world/article/see-you-at-ces-guy-kawasaki?cid=email_articlefeed_articletitlelink&utm_source=OM&utm_medium=Twitter&utm_term=Alltop&utm_campaign=HolyKawToAlltop2010&utm_content=Alltop) on line #37 of app/views/statuses/_status.html.erb:
+34: 		<%= get_vid_embed(purgeurl(status.text)) %>
+35: 	 	 <%- else %>
+36: 			<div style="float:left; width:210px"><%= image_tag(create_weblink_img_url(purgeurl(status.text))) %></div>
+37: 			<%- if extract_weblink_title(purgeurl(status.text)) %>
+38: 			<div style="float:left">	 <%= extract_weblink_title(purgeurl(status.text)) %> 
+39: 				</div><%- end %> 
+40: 		
+
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:174:in `open_loop'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:132:in `open_uri'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:518:in `open'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:30:in `open'
+    app/helpers/statuses_helper.rb:118:in `extract_weblink_title'
+    app/views/statuses/_status.html.erb:37
+    app/views/statuses/index.html.erb:3
+    app/views/statuses/index.html.erb:2:in `each'
+    app/views/statuses/index.html.erb:2
+
+Rendered rescues/_trace (62.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StatusesController#mentions (for 127.0.0.1 at 2010-01-05 23:51:24) [GET]
+  Parameters: {"action"=>"mentions", "controller"=>"statuses"}
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering statuses/mentions
+Rendered statuses/_status (1794.8ms)
+Rendered statuses/_status (6.0ms)
+Rendered statuses/_status (5.5ms)
+Rendered statuses/_status (6.1ms)
+Rendered statuses/_status (69.3ms)
+Rendered statuses/_status (5.7ms)
+Rendered statuses/_status (5.7ms)
+Rendered statuses/_status (6.0ms)
+Rendered statuses/_status (5.4ms)
+Rendered statuses/_status (5.5ms)
+Rendered statuses/_status (5.6ms)
+Rendered statuses/_status (5.7ms)
+Rendered statuses/_status (1362.4ms)
+Rendered statuses/_status (5.2ms)
+Rendered statuses/_status (5.3ms)
+Rendered statuses/_status (5.4ms)
+Rendered statuses/_status (4.8ms)
+Rendered statuses/_status (4.7ms)
+Rendered statuses/_status (5.3ms)
+Rendered statuses/_status (896.2ms)
+Rendered statuses/_pagination (0.5ms)
+Completed in 4967ms (View: 4223, DB: 0) | 200 OK [http://localhost/statuses/mentions]
+
+
+Processing SessionsController#finalize (for 127.0.0.1 at 2010-01-05 23:52:03) [GET]
+  Parameters: {"action"=>"finalize", "controller"=>"sessions", "oauth_token"=>"3Qb1zz3iSrEey3bm6gzVkN8SHuajxaBcfQ32y66A", "oauth_verifier"=>"TdQXIHvJFFf556FVwZgCGJLCrbGO8JejQjv67IV5Q"}
+
+OAuth::Unauthorized (401 Unauthorized):
+  oauth (0.3.6) lib/oauth/consumer.rb:200:in `token_request'
+  oauth (0.3.6) lib/oauth/tokens/request_token.rb:18:in `get_access_token'
+  twitter (0.6.15) lib/twitter/oauth.rb:39:in `authorize_from_request'
+  app/controllers/sessions_controller.rb:20:in `finalize'
+
+Rendered rescues/_trace (35.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing SessionsController#finalize (for 127.0.0.1 at 2010-01-05 23:52:07) [GET]
+  Parameters: {"action"=>"finalize", "controller"=>"sessions", "oauth_token"=>"3Qb1zz3iSrEey3bm6gzVkN8SHuajxaBcfQ32y66A", "oauth_verifier"=>"TdQXIHvJFFf556FVwZgCGJLCrbGO8JejQjv67IV5Q"}
+
+OAuth::Unauthorized (401 Unauthorized):
+  oauth (0.3.6) lib/oauth/consumer.rb:200:in `token_request'
+  oauth (0.3.6) lib/oauth/tokens/request_token.rb:18:in `get_access_token'
+  twitter (0.6.15) lib/twitter/oauth.rb:39:in `authorize_from_request'
+  app/controllers/sessions_controller.rb:20:in `finalize'
+
+Rendered rescues/_trace (104.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing SessionsController#finalize (for 127.0.0.1 at 2010-01-05 23:52:09) [GET]
+  Parameters: {"action"=>"finalize", "controller"=>"sessions", "oauth_token"=>"3Qb1zz3iSrEey3bm6gzVkN8SHuajxaBcfQ32y66A", "oauth_verifier"=>"TdQXIHvJFFf556FVwZgCGJLCrbGO8JejQjv67IV5Q"}
+
+OAuth::Unauthorized (401 Unauthorized):
+  oauth (0.3.6) lib/oauth/consumer.rb:200:in `token_request'
+  oauth (0.3.6) lib/oauth/tokens/request_token.rb:18:in `get_access_token'
+  twitter (0.6.15) lib/twitter/oauth.rb:39:in `authorize_from_request'
+  app/controllers/sessions_controller.rb:20:in `finalize'
+
+Rendered rescues/_trace (36.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-01-05 23:52:20) [GET]
+  Parameters: {"action"=>"index", "controller"=>"statuses"}
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering statuses/index
+Rendered statuses/_status (1254.3ms)
+Rendered statuses/_status (2132.3ms)
+Rendered statuses/_status (2229.4ms)
+Rendered statuses/_status (5.5ms)
+Rendered statuses/_status (1217.9ms)
+Rendered statuses/_status (420.4ms)
+
+ActionView::TemplateError (redirection forbidden: http://om.ly/dnFX -> https://www.openforum.com/idea-hub/topics/the-world/article/see-you-at-ces-guy-kawasaki?cid=email_articlefeed_articletitlelink&utm_source=OM&utm_medium=Twitter&utm_term=Alltop&utm_campaign=HolyKawToAlltop2010&utm_content=Alltop) on line #37 of app/views/statuses/_status.html.erb:
+34: 		<%= get_vid_embed(purgeurl(status.text)) %>
+35: 	 	 <%- else %>
+36: 			<div style="float:left; width:210px"><%= image_tag(create_weblink_img_url(purgeurl(status.text))) %></div>
+37: 			<%- if extract_weblink_title(purgeurl(status.text)) %>
+38: 			<div style="float:left">	 <%= extract_weblink_title(purgeurl(status.text)) %> 
+39: 				</div><%- end %> 
+40: 		
+
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:174:in `open_loop'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:132:in `open_uri'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:518:in `open'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:30:in `open'
+    app/helpers/statuses_helper.rb:118:in `extract_weblink_title'
+    app/views/statuses/_status.html.erb:37
+    app/views/statuses/index.html.erb:3
+    app/views/statuses/index.html.erb:2:in `each'
+    app/views/statuses/index.html.erb:2
+
+Rendered rescues/_trace (49.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StatusesController#mentions (for 127.0.0.1 at 2010-01-05 23:52:45) [GET]
+  Parameters: {"action"=>"mentions", "controller"=>"statuses"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering statuses/mentions
+Rendered statuses/_status (2004.7ms)
+Rendered statuses/_status (6.9ms)
+Rendered statuses/_status (6.4ms)
+Rendered statuses/_status (8.4ms)
+Rendered statuses/_status (7.8ms)
+Rendered statuses/_status (6.4ms)
+Rendered statuses/_status (8.9ms)
+Rendered statuses/_status (6.3ms)
+Rendered statuses/_status (5.4ms)
+Rendered statuses/_status (5.7ms)
+Rendered statuses/_status (5.9ms)
+Rendered statuses/_status (5.5ms)
+Rendered statuses/_status (1129.3ms)
+Rendered statuses/_status (6.1ms)
+Rendered statuses/_status (5.9ms)
+Rendered statuses/_status (5.7ms)
+Rendered statuses/_status (5.4ms)
+Rendered statuses/_status (6.1ms)
+Rendered statuses/_status (7.8ms)
+Rendered statuses/_status (1318.2ms)
+Rendered statuses/_pagination (0.5ms)
+Completed in 5299ms (View: 4640, DB: 0) | 200 OK [http://localhost/statuses/mentions]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-01-05 23:52:53) [GET]
+  Parameters: {"action"=>"index", "controller"=>"statuses"}
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering statuses/index
+Rendered statuses/_status (1252.5ms)
+Rendered statuses/_status (2692.1ms)
+Rendered statuses/_status (2815.1ms)
+Rendered statuses/_status (6.1ms)
+Rendered statuses/_status (2056.4ms)
+Rendered statuses/_status (461.3ms)
+
+ActionView::TemplateError (redirection forbidden: http://om.ly/dnFX -> https://www.openforum.com/idea-hub/topics/the-world/article/see-you-at-ces-guy-kawasaki?cid=email_articlefeed_articletitlelink&utm_source=OM&utm_medium=Twitter&utm_term=Alltop&utm_campaign=HolyKawToAlltop2010&utm_content=Alltop) on line #37 of app/views/statuses/_status.html.erb:
+34: 		<%= get_vid_embed(purgeurl(status.text)) %>
+35: 	 	 <%- else %>
+36: 			<div style="float:left; width:210px"><%= image_tag(create_weblink_img_url(purgeurl(status.text))) %></div>
+37: 			<%- if extract_weblink_title(purgeurl(status.text)) %>
+38: 			<div style="float:left">	 <%= extract_weblink_title(purgeurl(status.text)) %> 
+39: 				</div><%- end %> 
+40: 		
+
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:174:in `open_loop'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:132:in `open_uri'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:518:in `open'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:30:in `open'
+    app/helpers/statuses_helper.rb:118:in `extract_weblink_title'
+    app/views/statuses/_status.html.erb:37
+    app/views/statuses/index.html.erb:3
+    app/views/statuses/index.html.erb:2:in `each'
+    app/views/statuses/index.html.erb:2
+
+Rendered rescues/_trace (202.3ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-01-06 00:27:23) [GET]
+  Parameters: {"action"=>"index", "controller"=>"statuses"}
+  [4;35;1mUser Load (26.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering statuses/index
+Rendered statuses/_status (312.6ms)
+Rendered statuses/_status (4927.8ms)
+Rendered statuses/_status (5.5ms)
+Rendered statuses/_status (522.6ms)
+Rendered statuses/_status (5.3ms)
+Rendered statuses/_status (81.9ms)
+Rendered statuses/_status (1434.0ms)
+Rendered statuses/_status (3604.9ms)
+Rendered statuses/_status (3738.1ms)
+Rendered statuses/_status (1298.8ms)
+Rendered statuses/_status (2153.3ms)
+Rendered statuses/_status (2754.6ms)
+Rendered statuses/_status (6.2ms)
+Rendered statuses/_status (1735.6ms)
+Rendered statuses/_status (501.8ms)
+
+ActionView::TemplateError (redirection forbidden: http://om.ly/dnFX -> https://www.openforum.com/idea-hub/topics/the-world/article/see-you-at-ces-guy-kawasaki?cid=email_articlefeed_articletitlelink&utm_source=OM&utm_medium=Twitter&utm_term=Alltop&utm_campaign=HolyKawToAlltop2010&utm_content=Alltop) on line #37 of app/views/statuses/_status.html.erb:
+34: 		<%= get_vid_embed(purgeurl(status.text)) %>
+35: 	 	 <%- else %>
+36: 			<div style="float:left; width:210px"><%= image_tag(create_weblink_img_url(purgeurl(status.text))) %></div>
+37: 			<%- if extract_weblink_title(purgeurl(status.text)) %>
+38: 			<div style="float:left">	 <%= extract_weblink_title(purgeurl(status.text)) %> 
+39: 				</div><%- end %> 
+40: 		
+
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:174:in `open_loop'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:132:in `open_uri'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:518:in `open'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:30:in `open'
+    app/helpers/statuses_helper.rb:118:in `extract_weblink_title'
+    app/views/statuses/_status.html.erb:37
+    app/views/statuses/index.html.erb:3
+    app/views/statuses/index.html.erb:2:in `each'
+    app/views/statuses/index.html.erb:2
+
+Rendered rescues/_trace (76.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-01-06 00:28:22) [GET]
+  Parameters: {"action"=>"index", "page"=>"1", "controller"=>"statuses"}
+  [4;36;1mUser Load (15.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering statuses/index
+Rendered statuses/_status (2205.1ms)
+Rendered statuses/_status (5.3ms)
+Rendered statuses/_status (2221.0ms)
+Rendered statuses/_status (5.6ms)
+Rendered statuses/_status (496.3ms)
+Rendered statuses/_status (5.6ms)
+Rendered statuses/_status (5.2ms)
+Rendered statuses/_status (1331.1ms)
+Rendered statuses/_status (3062.8ms)
+Rendered statuses/_status (3243.0ms)
+Rendered statuses/_status (1129.8ms)
+Rendered statuses/_status (2752.4ms)
+Rendered statuses/_status (2079.2ms)
+Rendered statuses/_status (6.2ms)
+Rendered statuses/_status (1422.9ms)
+Rendered statuses/_status (460.8ms)
+
+ActionView::TemplateError (redirection forbidden: http://om.ly/dnFX -> https://www.openforum.com/idea-hub/topics/the-world/article/see-you-at-ces-guy-kawasaki?cid=email_articlefeed_articletitlelink&utm_source=OM&utm_medium=Twitter&utm_term=Alltop&utm_campaign=HolyKawToAlltop2010&utm_content=Alltop) on line #37 of app/views/statuses/_status.html.erb:
+34: 		<%= get_vid_embed(purgeurl(status.text)) %>
+35: 	 	 <%- else %>
+36: 			<div style="float:left; width:210px"><%= image_tag(create_weblink_img_url(purgeurl(status.text))) %></div>
+37: 			<%- if extract_weblink_title(purgeurl(status.text)) %>
+38: 			<div style="float:left">	 <%= extract_weblink_title(purgeurl(status.text)) %> 
+39: 				</div><%- end %> 
+40: 		
+
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:174:in `open_loop'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:132:in `open_uri'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:518:in `open'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:30:in `open'
+    app/helpers/statuses_helper.rb:118:in `extract_weblink_title'
+    app/views/statuses/_status.html.erb:37
+    app/views/statuses/index.html.erb:3
+    app/views/statuses/index.html.erb:2:in `each'
+    app/views/statuses/index.html.erb:2
+
+Rendered rescues/_trace (54.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-01-06 00:28:43) [GET]
+  Parameters: {"action"=>"index", "page"=>"2", "controller"=>"statuses"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering statuses/index
+Rendered statuses/_status (3070.1ms)
+Rendered statuses/_status (521.3ms)
+Rendered statuses/_status (465.8ms)
+Rendered statuses/_status (2078.3ms)
+Rendered statuses/_status (2604.7ms)
+Rendered statuses/_status (6.1ms)
+Rendered statuses/_status (488.4ms)
+Rendered statuses/_status (1563.5ms)
+Rendered statuses/_status (2457.0ms)
+Rendered statuses/_status (6.8ms)
+Rendered statuses/_status (1724.2ms)
+Rendered statuses/_status (2115.2ms)
+Rendered statuses/_status (4111.2ms)
+Rendered statuses/_status (1427.5ms)
+Rendered statuses/_pagination (0.6ms)
+Completed in 23227ms (View: 22653, DB: 0) | 200 OK [http://localhost/?page=2]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-06 09:37:51) [GET]
+
+ActionController::RoutingError (No route matches "/tickets" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-01-06 09:46:59) [GET]
+  Parameters: {"action"=>"index", "controller"=>"statuses"}
+  [4;36;1mUser Load (23.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering statuses/index
+Rendered statuses/_status (73.8ms)
+Rendered statuses/_status (2516.0ms)
+Rendered statuses/_status (2240.6ms)
+Rendered statuses/_status (48720.0ms)
+Rendered statuses/_status (2246.9ms)
+Rendered statuses/_status (3933.3ms)
+Rendered statuses/_status (6.8ms)
+Rendered statuses/_status (4370.3ms)
+Rendered statuses/_status (2506.8ms)
+Rendered statuses/_status (1699.4ms)
+Rendered statuses/_status (6.2ms)
+Rendered statuses/_status (664.4ms)
+Rendered statuses/_status (93374.9ms)
+Rendered statuses/_status (3672.1ms)
+Rendered statuses/_status (3415.4ms)
+Rendered statuses/_status (14.3ms)
+Rendered statuses/_status (3077.1ms)
+Rendered statuses/_status (6005.3ms)
+Rendered statuses/_pagination (0.5ms)
+Completed in 180381ms (View: 178727, DB: 23) | 200 OK [http://localhost/]
+
+
+Processing StatusesController#mentions (for 127.0.0.1 at 2010-01-06 09:51:00) [GET]
+  Parameters: {"action"=>"mentions", "controller"=>"statuses"}
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering statuses/mentions
+Rendered statuses/_status (12.2ms)
+Rendered statuses/_status (2249.0ms)
+Rendered statuses/_status (6.6ms)
+Rendered statuses/_status (7.0ms)
+Rendered statuses/_status (6.7ms)
+Rendered statuses/_status (7.0ms)
+Rendered statuses/_status (6.0ms)
+Rendered statuses/_status (5.8ms)
+Rendered statuses/_status (6.3ms)
+Rendered statuses/_status (6.0ms)
+Rendered statuses/_status (6.2ms)
+Rendered statuses/_status (5.9ms)
+Rendered statuses/_status (5.5ms)
+Rendered statuses/_status (1623.3ms)
+Rendered statuses/_status (6.8ms)
+Rendered statuses/_status (8.3ms)
+Rendered statuses/_status (6.1ms)
+Rendered statuses/_status (6.6ms)
+Rendered statuses/_status (6.3ms)
+Rendered statuses/_status (6.7ms)
+Rendered statuses/_pagination (0.5ms)
+Completed in 5377ms (View: 4014, DB: 0) | 200 OK [http://localhost/statuses/mentions]
+
+
+Processing UsersController#show (for 127.0.0.1 at 2010-01-06 09:51:25) [GET]
+  Parameters: {"action"=>"show", "id"=>"martinhuegli", "controller"=>"users"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering users/show
+Rendered statuses/_status (5.8ms)
+Rendered statuses/_status (1029.4ms)
+Rendered statuses/_status (1747.0ms)
+Rendered statuses/_status (4269.5ms)
+Rendered statuses/_status (5842.5ms)
+Rendered statuses/_status (5.9ms)
+Rendered statuses/_status (6.8ms)
+Rendered statuses/_status (1194.2ms)
+Rendered statuses/_status (7.1ms)
+
+ActionView::TemplateError (Operation timed out - connect(2)) on line #37 of app/views/statuses/_status.html.erb:
+34: 		<%= get_vid_embed(purgeurl(status.text)) %>
+35: 	 	 <%- else %>
+36: 			<div style="float:left; width:210px"><%= image_tag(create_weblink_img_url(purgeurl(status.text))) %></div>
+37: 			<%- if extract_weblink_title(purgeurl(status.text)) %>
+38: 			<div style="float:left">	 <%= extract_weblink_title(purgeurl(status.text)) %> 
+39: 				</div><%- end %> 
+40: 		
+
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/net/http.rb:560:in `initialize'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/net/http.rb:560:in `open'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/net/http.rb:560:in `connect'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/timeout.rb:53:in `timeout'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/timeout.rb:93:in `timeout'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/net/http.rb:560:in `connect'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/net/http.rb:553:in `do_start'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/net/http.rb:542:in `start'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:242:in `open_http'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:616:in `buffer_open'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:164:in `open_loop'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:162:in `catch'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:162:in `open_loop'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:132:in `open_uri'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:518:in `open'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:30:in `open'
+    app/helpers/statuses_helper.rb:118:in `extract_weblink_title'
+    app/views/statuses/_status.html.erb:37
+    app/views/users/show.html.erb:49
+    app/views/users/show.html.erb:48:in `each'
+    app/views/users/show.html.erb:48
+
+Rendered rescues/_trace (158.8ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-01-06 10:53:15) [GET]
+  Parameters: {"action"=>"index", "controller"=>"statuses"}
+  [4;35;1mUser Load (13.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering statuses/index
+Rendered statuses/_status (895.9ms)
+Rendered statuses/_status (5.2ms)
+Rendered statuses/_status (1861.4ms)
+Rendered statuses/_status (461.3ms)
+Rendered statuses/_status (1037.2ms)
+Rendered statuses/_status (1079.2ms)
+Rendered statuses/_status (5.5ms)
+Rendered statuses/_status (1021.8ms)
+Rendered statuses/_status (1255.3ms)
+Rendered statuses/_status (2322.2ms)
+Rendered statuses/_status (3361.8ms)
+Rendered statuses/_status (697.4ms)
+Rendered statuses/_status (695.1ms)
+Rendered statuses/_status (401.9ms)
+Rendered statuses/_status (1422.3ms)
+Rendered statuses/_status (1946.6ms)
+Rendered statuses/_status (2789.6ms)
+Rendered statuses/_status (1130.8ms)
+Rendered statuses/_status (2308.7ms)
+Rendered statuses/_pagination (0.4ms)
+Completed in 26940ms (View: 24741, DB: 13) | 200 OK [http://localhost/]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-01-06 10:57:21) [GET]
+  Parameters: {"action"=>"index", "page"=>"2", "controller"=>"statuses"}
+  [4;36;1mUser Load (12.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering statuses/index
+Rendered statuses/_status (431.6ms)
+Rendered statuses/_status (154.9ms)
+Rendered statuses/_status (255.1ms)
+Rendered statuses/_status (1856.1ms)
+Rendered statuses/_status (2190.2ms)
+Rendered statuses/_status (3159.5ms)
+Rendered statuses/_status (238.0ms)
+Rendered statuses/_status (5127.7ms)
+Rendered statuses/_status (5.2ms)
+Rendered statuses/_status (4557.9ms)
+Rendered statuses/_status (5.7ms)
+Rendered statuses/_status (5.8ms)
+Rendered statuses/_status (2241.1ms)
+Rendered statuses/_status (543.2ms)
+Rendered statuses/_status (1931.7ms)
+Rendered statuses/_status (1959.7ms)
+Rendered statuses/_status (2260.9ms)
+Rendered statuses/_status (6.9ms)
+Rendered statuses/_pagination (0.7ms)
+Completed in 27340ms (View: 26944, DB: 12) | 200 OK [http://localhost/?page=2]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-01-06 10:57:48) [GET]
+  Parameters: {"action"=>"index", "page"=>"2", "controller"=>"statuses"}
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering statuses/index
+Rendered statuses/_status (781.3ms)
+Rendered statuses/_status (496.1ms)
+Rendered statuses/_status (233.1ms)
+Rendered statuses/_status (522.6ms)
+Rendered statuses/_status (1856.3ms)
+Rendered statuses/_status (2712.4ms)
+Rendered statuses/_status (272.2ms)
+Rendered statuses/_status (2388.3ms)
+Rendered statuses/_status (6.6ms)
+Rendered statuses/_status (3486.6ms)
+Rendered statuses/_status (5.7ms)
+Rendered statuses/_status (5.4ms)
+Rendered statuses/_status (2099.1ms)
+Rendered statuses/_status (375.9ms)
+Rendered statuses/_status (2737.4ms)
+Rendered statuses/_status (2538.6ms)
+Rendered statuses/_status (2032.2ms)
+Rendered statuses/_status (7.9ms)
+Rendered statuses/_pagination (1.3ms)
+Completed in 24689ms (View: 22574, DB: 1) | 200 OK [http://localhost/?page=2]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-01-06 11:04:15) [GET]
+  Parameters: {"action"=>"index", "page"=>"2", "controller"=>"statuses"}
+  [4;36;1mUser Load (14.1ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering statuses/index
+Rendered statuses/_status (2549.1ms)
+Rendered statuses/_status (1292.5ms)
+Rendered statuses/_status (5581.0ms)
+Rendered statuses/_status (857.6ms)
+Rendered statuses/_status (658.6ms)
+Rendered statuses/_status (612.3ms)
+Rendered statuses/_status (660.0ms)
+Rendered statuses/_status (7209.8ms)
+Rendered statuses/_status (2822.9ms)
+Rendered statuses/_status (1500.6ms)
+Rendered statuses/_status (5893.9ms)
+Rendered statuses/_status (6.4ms)
+Rendered statuses/_status (3742.4ms)
+Rendered statuses/_status (5.6ms)
+Rendered statuses/_status (7.0ms)
+Rendered statuses/_status (2402.0ms)
+Rendered statuses/_status (1927.3ms)
+Rendered statuses/_status (2091.7ms)
+Rendered statuses/_pagination (0.8ms)
+Completed in 40700ms (View: 39834, DB: 14) | 200 OK [http://localhost/?page=2]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-01-06 11:06:08) [GET]
+  Parameters: {"action"=>"index", "page"=>"2", "controller"=>"statuses"}
+  [4;35;1mUser Load (15.8ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering statuses/index
+Rendered statuses/_status (452.7ms)
+Rendered statuses/_status (5.8ms)
+Rendered statuses/_status (5.7ms)
+Rendered statuses/_status (5.6ms)
+Rendered statuses/_status (7.1ms)
+Rendered statuses/_status (5.8ms)
+Rendered statuses/_status (5.7ms)
+Rendered statuses/_status (5.6ms)
+Rendered statuses/_status (6.3ms)
+Rendered statuses/_status (474.3ms)
+Rendered statuses/_status (6.6ms)
+Rendered statuses/_status (6.6ms)
+Rendered statuses/_status (5.0ms)
+Rendered statuses/_status (5.7ms)
+Rendered statuses/_status (5.0ms)
+Rendered statuses/_status (5.1ms)
+Rendered statuses/_status (475.8ms)
+Rendered statuses/_status (6.1ms)
+Rendered statuses/_pagination (0.7ms)
+Completed in 3339ms (View: 1602, DB: 16) | 200 OK [http://localhost/?page=2]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-01-06 11:08:06) [GET]
+  Parameters: {"action"=>"index", "controller"=>"statuses"}
+  [4;36;1mUser Load (15.1ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering statuses/index
+Rendered statuses/_status (5.4ms)
+Rendered statuses/_status (5.6ms)
+Rendered statuses/_status (6.5ms)
+Rendered statuses/_status (6.6ms)
+Rendered statuses/_status (451.0ms)
+Rendered statuses/_status (5.6ms)
+Rendered statuses/_status (451.4ms)
+Rendered statuses/_status (6.4ms)
+Rendered statuses/_status (449.8ms)
+Rendered statuses/_status (5.5ms)
+Rendered statuses/_status (5.6ms)
+Rendered statuses/_status (463.9ms)
+Rendered statuses/_status (6.1ms)
+Rendered statuses/_status (544.2ms)
+Rendered statuses/_status (463.8ms)
+Rendered statuses/_status (5.1ms)
+Rendered statuses/_status (6.7ms)
+Rendered statuses/_status (446.8ms)
+Rendered statuses/_status (5.8ms)
+Rendered statuses/_status (6.1ms)
+Rendered statuses/_pagination (0.4ms)
+Completed in 5185ms (View: 3380, DB: 15) | 200 OK [http://localhost/]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-01-06 11:09:08) [GET]
+  Parameters: {"action"=>"index", "controller"=>"statuses"}
+  [4;35;1mUser Load (13.9ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering statuses/index
+Rendered statuses/_status (7.9ms)
+Rendered statuses/_status (2154.2ms)
+Rendered statuses/_status (3324.4ms)
+Rendered statuses/_status (3131.6ms)
+Rendered statuses/_status (2524.5ms)
+Rendered statuses/_status (5.9ms)
+Rendered statuses/_status (1227.6ms)
+Rendered statuses/_status (1781.3ms)
+Rendered statuses/_status (1525.4ms)
+Rendered statuses/_status (1483.4ms)
+Rendered statuses/_status (6.3ms)
+Rendered statuses/_status (1455.8ms)
+Rendered statuses/_status (917.2ms)
+Rendered statuses/_status (1482.6ms)
+Rendered statuses/_status (1288.6ms)
+Rendered statuses/_status (6.1ms)
+Rendered statuses/_status (1288.6ms)
+Rendered statuses/_status (1494.0ms)
+Rendered statuses/_status (3087.8ms)
+Rendered statuses/_status (2183.5ms)
+Rendered statuses/_pagination (0.6ms)
+Completed in 31965ms (View: 30394, DB: 14) | 200 OK [http://localhost/]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-01-06 11:42:27) [GET]
+  Parameters: {"action"=>"index", "controller"=>"statuses"}
+  [4;36;1mUser Load (18.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering statuses/index
+Rendered statuses/_status (900.3ms)
+Rendered statuses/_status (5.8ms)
+Rendered statuses/_status (16845.3ms)
+Rendered statuses/_status (11.1ms)
+Rendered statuses/_status (2743.8ms)
+Rendered statuses/_status (2247.1ms)
+Rendered statuses/_status (1776.9ms)
+Rendered statuses/_status (1481.5ms)
+Rendered statuses/_status (14564.8ms)
+Rendered statuses/_status (7302.0ms)
+Rendered statuses/_status (1589.8ms)
+Rendered statuses/_status (5.0ms)
+Rendered statuses/_status (2454.6ms)
+Rendered statuses/_status (5.4ms)
+Rendered statuses/_status (2197.1ms)
+Rendered statuses/_status (6.0ms)
+Rendered statuses/_status (1152.3ms)
+Rendered statuses/_status (5.5ms)
+Rendered statuses/_status (2447.7ms)
+Rendered statuses/_status (575.5ms)
+Rendered statuses/_pagination (0.4ms)
+Completed in 60449ms (View: 58339, DB: 18) | 200 OK [http://localhost/]
+
+
+Processing UsersController#show (for 127.0.0.1 at 2010-01-06 11:48:00) [GET]
+  Parameters: {"action"=>"show", "id"=>"martinhuegli", "controller"=>"users"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering users/show
+Rendered statuses/_status (572.4ms)
+Rendered statuses/_status (5.9ms)
+Rendered statuses/_status (815.1ms)
+Rendered statuses/_status (2089.3ms)
+Rendered statuses/_status (4030.5ms)
+Rendered statuses/_status (838.5ms)
+Rendered statuses/_status (73.6ms)
+Rendered statuses/_status (5.8ms)
+Rendered statuses/_status (1200.8ms)
+Rendered statuses/_status (8.5ms)
+Rendered statuses/_status (1629.1ms)
+Rendered statuses/_status (5.9ms)
+Rendered statuses/_status (6.6ms)
+Rendered statuses/_status (5.1ms)
+Rendered statuses/_status (5.8ms)
+Rendered statuses/_status (5.2ms)
+Rendered statuses/_status (1670.2ms)
+Rendered statuses/_status (16.8ms)
+Rendered statuses/_status (2355.8ms)
+Rendered statuses/_status (6.0ms)
+Completed in 17546ms (View: 15930, DB: 0) | 200 OK [http://localhost/users/martinhuegli]
+
+
+Processing StatusesController#create (for 127.0.0.1 at 2010-01-06 11:49:24) [POST]
+  Parameters: {"commit"=>"Update", "return_to"=>"/users/martinhuegli", "action"=>"create", "authenticity_token"=>"SL3tN0huWIc5fAQTQfwnxoWGrhfu5a69MdX1CrjDxL4=", "text"=>"test", "controller"=>"statuses", "in_reply_to_status_id"=>""}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Redirected to http://localhost:3000/session/new
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-01-06 11:49:26) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-01-06 11:49:32) [GET]
+  Parameters: {"action"=>"index", "controller"=>"statuses"}
+Rendering template within layouts/application
+Rendering /sessions/new (unauthorized)
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 4ms (View: 3, DB: 0) | 401 Unauthorized [http://localhost/]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2010-01-06 11:49:33) [POST]
+  Parameters: {"x"=>"91", "y"=>"19", "action"=>"create", "authenticity_token"=>"FojlyY3wIpijHrd/X+T6Hc+W+QNYw4aYRabt1r3h0x8=", "controller"=>"sessions"}
+Redirected to http://twitter.com/oauth/authenticate?oauth_token=yiwPMwkcD654dhgJKkilkiWWmgEAI10EkbVokPmCbFM
+Completed in 962ms (DB: 0) | 302 Found [http://localhost/session]
+
+
+Processing SessionsController#finalize (for 127.0.0.1 at 2010-01-06 11:49:35) [GET]
+  Parameters: {"action"=>"finalize", "controller"=>"sessions", "oauth_token"=>"yiwPMwkcD654dhgJKkilkiWWmgEAI10EkbVokPmCbFM", "oauth_verifier"=>"tFSIXvKpirORqtHJC04NSz2aE4PFmYqUJzVyqqbcbw"}
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."screen_name" = 'martinhuegli') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 1887ms (DB: 0) | 302 Found [http://localhost/session/finalize?oauth_token=yiwPMwkcD654dhgJKkilkiWWmgEAI10EkbVokPmCbFM&oauth_verifier=tFSIXvKpirORqtHJC04NSz2aE4PFmYqUJzVyqqbcbw]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-01-06 11:49:37) [GET]
+  Parameters: {"action"=>"index", "controller"=>"statuses"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering statuses/index
+Rendered statuses/_status (2451.2ms)
+Rendered statuses/_status (1445.7ms)
+Rendered statuses/_status (2725.0ms)
+Rendered statuses/_status (1361.0ms)
+Rendered statuses/_status (1378.0ms)
+Rendered statuses/_status (2661.4ms)
+Rendered statuses/_status (1705.0ms)
+Rendered statuses/_status (6.2ms)
+Rendered statuses/_status (558.5ms)
+Rendered statuses/_status (5.9ms)
+Rendered statuses/_status (2077.9ms)
+Rendered statuses/_status (11.4ms)
+Rendered statuses/_status (1991.4ms)
+Rendered statuses/_status (2261.7ms)
+Rendered statuses/_status (1651.3ms)
+Rendered statuses/_status (1450.5ms)
+Rendered statuses/_status (6871.0ms)
+Rendered statuses/_status (4875.2ms)
+Rendered statuses/_status (2110.3ms)
+Rendered statuses/_status (6.4ms)
+Rendered statuses/_pagination (0.3ms)
+Completed in 38437ms (View: 37625, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-01-06 11:52:17) [GET]
+  Parameters: {"action"=>"index", "controller"=>"statuses"}
+  [4;35;1mUser Load (15.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering statuses/index
+Rendered statuses/_status (2467.9ms)
+Rendered statuses/_status (1268.4ms)
+Rendered statuses/_status (1691.0ms)
+Rendered statuses/_status (1062.2ms)
+Rendered statuses/_status (1534.8ms)
+Rendered statuses/_status (2639.4ms)
+Rendered statuses/_status (1304.0ms)
+Rendered statuses/_status (5.9ms)
+Rendered statuses/_status (592.3ms)
+Rendered statuses/_status (5.5ms)
+Rendered statuses/_status (3033.2ms)
+Rendered statuses/_status (7.8ms)
+Rendered statuses/_status (2056.7ms)
+Rendered statuses/_status (2309.1ms)
+Rendered statuses/_status (1602.5ms)
+Rendered statuses/_status (1641.0ms)
+Rendered statuses/_status (3371.4ms)
+Rendered statuses/_status (2580.8ms)
+Rendered statuses/_status (2234.0ms)
+Rendered statuses/_status (7.6ms)
+Rendered statuses/_pagination (0.8ms)
+Completed in 32864ms (View: 31433, DB: 15) | 200 OK [http://localhost/]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-01-06 11:53:00) [GET]
+  Parameters: {"action"=>"index", "controller"=>"statuses"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering statuses/index
+Rendered statuses/_status (2185.0ms)
+Rendered statuses/_status (1332.9ms)
+Rendered statuses/_status (3071.6ms)
+Rendered statuses/_status (1064.6ms)
+Rendered statuses/_status (1545.0ms)
+Rendered statuses/_status (1854.2ms)
+Rendered statuses/_status (5406.5ms)
+Rendered statuses/_status (6.9ms)
+Rendered statuses/_status (826.0ms)
+Rendered statuses/_status (5.1ms)
+Rendered statuses/_status (2247.8ms)
+Rendered statuses/_status (6.2ms)
+
+ActionView::TemplateError (Connection reset by peer) on line #37 of app/views/statuses/_status.html.erb:
+34: 		<%= get_vid_embed(purgeurl(status.text)) %>
+35: 	 	 <%- else %>
+36: 			<div style="float:left; width:210px"><%= image_tag(create_weblink_img_url(purgeurl(status.text))) %></div>
+37: 				<%- if extract_weblink_text(purgeurl(status.text)) %>
+38: 				<div style="float:left; width:300px">	 <%= extract_weblink_text(purgeurl(status.text)) %> 
+39: 					</div><%- end %>
+40: 		
+
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/net/protocol.rb:135:in `sysread'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/net/protocol.rb:135:in `rbuf_fill'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/timeout.rb:62:in `timeout'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/timeout.rb:93:in `timeout'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/net/protocol.rb:134:in `rbuf_fill'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/net/protocol.rb:116:in `readuntil'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/net/protocol.rb:126:in `readline'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/net/http.rb:2020:in `read_status_line'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/net/http.rb:2009:in `read_new'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/net/http.rb:1050:in `request'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:248:in `open_http'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/net/http.rb:543:in `start'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:242:in `open_http'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:616:in `buffer_open'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:164:in `open_loop'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:162:in `catch'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:162:in `open_loop'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:132:in `open_uri'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:518:in `open'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/open-uri.rb:30:in `open'
+    app/helpers/statuses_helper.rb:102:in `extract_weblink_text'
+    app/views/statuses/_status.html.erb:37
+    app/views/statuses/index.html.erb:3
+    app/views/statuses/index.html.erb:2:in `each'
+    app/views/statuses/index.html.erb:2
+
+Rendered rescues/_trace (140.0ms)
+Rendered rescues/_request_and_response (19.5ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-01-06 11:53:42) [GET]
+  Parameters: {"action"=>"index", "controller"=>"statuses"}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering statuses/index
+Rendered statuses/_status (2833.5ms)
+Rendered statuses/_status (1446.6ms)
+Rendered statuses/_status (1584.2ms)
+Rendered statuses/_status (1044.2ms)
+Rendered statuses/_status (1514.4ms)
+Rendered statuses/_status (3034.4ms)
+Rendered statuses/_status (1677.0ms)
+Rendered statuses/_status (5.8ms)
+Rendered statuses/_status (558.3ms)
+Rendered statuses/_status (5.9ms)
+Rendered statuses/_status (2083.8ms)
+Rendered statuses/_status (6.1ms)
+Rendered statuses/_status (2003.9ms)
+Rendered statuses/_status (2337.5ms)
+Rendered statuses/_status (2055.1ms)
+Rendered statuses/_status (1183.5ms)
+Rendered statuses/_status (3144.6ms)
+Rendered statuses/_status (3129.4ms)
+Rendered statuses/_status (2137.4ms)
+Rendered statuses/_status (6.9ms)
+Rendered statuses/_pagination (0.5ms)
+Completed in 33267ms (View: 31809, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-01-06 11:55:14) [GET]
+  Parameters: {"action"=>"index", "controller"=>"statuses"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering statuses/index
+Rendered statuses/_status (2823.1ms)
+Rendered statuses/_status (1578.0ms)
+Rendered statuses/_status (2608.2ms)
+Rendered statuses/_status (1396.5ms)
+Rendered statuses/_status (1705.2ms)
+Rendered statuses/_status (1204.2ms)
+Rendered statuses/_status (1607.4ms)
+Rendered statuses/_status (2492.6ms)
+Rendered statuses/_status (1718.0ms)
+Rendered statuses/_status (6.1ms)
+Rendered statuses/_status (596.7ms)
+Rendered statuses/_status (5.5ms)
+Rendered statuses/_status (3066.8ms)
+Rendered statuses/_status (7.0ms)
+Rendered statuses/_status (1902.8ms)
+Rendered statuses/_status (2366.8ms)
+Rendered statuses/_status (1728.4ms)
+Rendered statuses/_status (1420.1ms)
+Rendered statuses/_status (3659.9ms)
+Rendered statuses/_status (4044.5ms)
+Rendered statuses/_pagination (0.5ms)
+Completed in 37779ms (View: 35958, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-01-06 11:56:54) [GET]
+  Parameters: {"action"=>"index", "controller"=>"statuses"}
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering statuses/index
+Rendered statuses/_status (7.1ms)
+Rendered statuses/_status (2722.0ms)
+Rendered statuses/_status (1422.0ms)
+Rendered statuses/_status (2905.7ms)
+Rendered statuses/_status (1151.0ms)
+Rendered statuses/_status (1453.3ms)
+Rendered statuses/_status (1461.2ms)
+Rendered statuses/_status (1380.6ms)
+Rendered statuses/_status (2258.6ms)
+Rendered statuses/_status (1483.3ms)
+Rendered statuses/_status (6.0ms)
+Rendered statuses/_status (666.1ms)
+Rendered statuses/_status (6.0ms)
+Rendered statuses/_status (2084.3ms)
+Rendered statuses/_status (7.2ms)
+Rendered statuses/_status (1889.4ms)
+Rendered statuses/_status (2280.7ms)
+Rendered statuses/_status (2469.3ms)
+Rendered statuses/_status (1738.3ms)
+Rendered statuses/_status (2951.5ms)
+Rendered statuses/_pagination (0.6ms)
+Completed in 30986ms (View: 30368, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-01-06 11:58:47) [GET]
+  Parameters: {"action"=>"index", "controller"=>"statuses"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering statuses/index
+Rendered statuses/_status (1057.2ms)
+Rendered statuses/_status (1221.6ms)
+Rendered statuses/_status (2725.3ms)
+Rendered statuses/_status (5.0ms)
+Rendered statuses/_status (2526.8ms)
+Rendered statuses/_status (1309.4ms)
+Rendered statuses/_status (2070.4ms)
+Rendered statuses/_status (1135.9ms)
+Rendered statuses/_status (1437.9ms)
+Rendered statuses/_status (1075.3ms)
+Rendered statuses/_status (1510.9ms)
+Rendered statuses/_status (1901.2ms)
+Rendered statuses/_status (1411.6ms)
+Rendered statuses/_status (5.4ms)
+Rendered statuses/_status (1605.3ms)
+Rendered statuses/_status (7.5ms)
+Rendered statuses/_status (2383.3ms)
+Rendered statuses/_status (12.0ms)
+Rendered statuses/_status (1900.7ms)
+Rendered statuses/_status (2153.3ms)
+Rendered statuses/_pagination (0.4ms)
+Completed in 28918ms (View: 27477, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing UsersController#show (for 127.0.0.1 at 2010-01-06 12:00:27) [GET]
+  Parameters: {"action"=>"show", "id"=>"martinhuegli", "controller"=>"users"}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering users/show
+Rendered statuses/_status (574.6ms)
+Rendered statuses/_status (5.8ms)
+Rendered statuses/_status (749.7ms)
+Rendered statuses/_status (2034.7ms)
+Rendered statuses/_status (4246.0ms)
+Rendered statuses/_status (15498.4ms)
+Rendered statuses/_status (6.7ms)
+Rendered statuses/_status (5.5ms)
+Rendered statuses/_status (14085.6ms)
+Rendered statuses/_status (5.5ms)
+Rendered statuses/_status (1662.2ms)
+Rendered statuses/_status (5.6ms)
+Rendered statuses/_status (77.0ms)
+Rendered statuses/_status (6.2ms)
+Rendered statuses/_status (5.7ms)
+Rendered statuses/_status (6.3ms)
+Rendered statuses/_status (1972.4ms)
+Rendered statuses/_status (7.2ms)
+Rendered statuses/_status (1703.2ms)
+Rendered statuses/_status (6.7ms)
+Completed in 47110ms (View: 43968, DB: 0) | 200 OK [http://localhost/users/martinhuegli]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-01-06 13:19:11) [GET]
+  Parameters: {"action"=>"index", "controller"=>"statuses"}
+  [4;36;1mUser Load (46.6ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering statuses/index
+Rendered statuses/_status (5449.0ms)
+Rendered statuses/_status (5.1ms)
+Rendered statuses/_status (63.2ms)
+Rendered statuses/_status (3830.2ms)
+Rendered statuses/_status (7.2ms)
+Rendered statuses/_status (4301.0ms)
+Rendered statuses/_status (67.6ms)
+Rendered statuses/_status (6162.9ms)
+Rendered statuses/_status (9.2ms)
+Rendered statuses/_status (2609.7ms)
+Rendered statuses/_status (6.1ms)
+Rendered statuses/_status (5.6ms)
+Rendered statuses/_status (8.4ms)
+Rendered statuses/_status (3466.2ms)
+Rendered statuses/_status (12.1ms)
+Rendered statuses/_status (2075.0ms)
+Rendered statuses/_status (5574.2ms)
+Rendered statuses/_pagination (0.5ms)
+Completed in 39027ms (View: 33855, DB: 47) | 200 OK [http://localhost/]
+
+
+Processing UsersController#show (for 127.0.0.1 at 2010-01-06 13:34:55) [GET]
+  Parameters: {"action"=>"show", "id"=>"jowyang", "controller"=>"users"}
+  [4;35;1mUser Load (19.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering users/show
+Rendered statuses/_status (5.4ms)
+Rendered statuses/_status (2003.6ms)
+Rendered statuses/_status (54002.6ms)
+Rendered statuses/_status (6.8ms)
+Rendered statuses/_status (2868.0ms)
+Rendered statuses/_status (8.1ms)
+Rendered statuses/_status (2112.9ms)
+Rendered statuses/_status (5.4ms)
+Rendered statuses/_status (6.3ms)
+Rendered statuses/_status (6.7ms)
+Rendered statuses/_status (6.1ms)
+Rendered statuses/_status (695.0ms)
+Rendered statuses/_status (745.2ms)
+Rendered statuses/_status (5.9ms)
+Rendered statuses/_status (670.3ms)
+Rendered statuses/_status (11.9ms)
+Rendered statuses/_status (8.9ms)
+Rendered statuses/_status (3435.4ms)
+Rendered statuses/_status (3661.4ms)
+Rendered statuses/_status (6.6ms)
+Completed in 73935ms (View: 70960, DB: 19) | 200 OK [http://localhost/users/jowyang]
