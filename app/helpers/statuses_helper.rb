@@ -6,6 +6,7 @@ require 'bitly'
 require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
+require 'crack'
 
 module StatusesHelper
 
@@ -27,9 +28,9 @@ module StatusesHelper
 
 
   def purgeurl(statustext)
-   url = isolate_link(statustext)
-   purged_url = get_deshortened_url(url)
-   purged_url
+     url = isolate_link(statustext)
+     purged_url = get_deshortened_url(url)
+     purged_url
   end 
 
   def place_vid_emb(statustext)
@@ -98,13 +99,12 @@ module StatusesHelper
   end
 
   def extract_weblink_text(statustext)
-    url = statustext
+    url = isolate_link(statustext)
     doc = Nokogiri::HTML(open(url))
     posts = doc.at_css('p')
     t = posts.to_s
     f = t.gsub(/<\/?[^>]*>/, "") 
-    g = f
-    g
+    f
   end
   
   def extract_weblink_title(statustext)
@@ -130,18 +130,6 @@ module StatusesHelper
     weblink_metadescription
   end
 
-  def isolate_link(statustext) 
-    # works, but currently only for one link. More links will be complex.. 
-    a = URI.extract(statustext)
-    b = []
-    a.each do |test|
-        if test.match /(http:\/\/)/
-          b << test
-        end 
-    end
-    c = b[0]
-    c.to_s
-  end
 
   #
   # -------------- end url
@@ -150,6 +138,20 @@ module StatusesHelper
 
   #
   # -------------- here are the other helper methods
+  
+  
+  def isolate_link(statustext) 
+    # works, but currently only for one link. More links will be complex.. 
+    a = URI.extract(statustext)
+    b = []
+    a.each do |test|
+        if test.match /(http:\/\/)/
+          b << test
+        end 
+      end
+    c = b[0]
+    c    
+  end
   
   
   def get_deshortened_url(isourl)
@@ -170,12 +172,28 @@ module StatusesHelper
         TRUE
       when /(http:\/\/tcrn\.ch\/\w*)/
        TRUE
+      when /(http:\/\/om\.ly\/\w*)/
+        TRUE
+      when /(http:\/\/post\.ly\/\w*)/
+       TRUE
+      when /(http:\/\/digs\.by\/\w*)/
+       TRUE
       else
        FALSE
     end
   end
 
   def deshorten(isourl)
+    url = URI.parse("http://therealurl.appspot.com/?format=json&url=#{isourl}")
+    req = Crack::JSON.parse(Net::HTTP.get(url))
+    deshurl = req['url']
+    deshurl
+  end    
+
+    
+
+# too complex, switched to using webservice instead
+  def deshorten_old(isourl)
     #works
     expanded_url = ""
     case isourl

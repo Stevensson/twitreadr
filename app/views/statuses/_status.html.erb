@@ -1,5 +1,5 @@
 <%- user = status.user.blank? ? status.sender : status.user -%>
-<div id="status_<%= status.id %>" class="status">
+<div id="status_<%= status.id %>" class="status" style="background-color: #EFEFEF">
   <div class="info">
     <%= link_to image_tag(user.profile_image_url), user_url(user.screen_name), :class => 'profile_image' %>
     
@@ -24,21 +24,10 @@
   </div>
 
   <div class="text">
-    <%= linkup_mentions(auto_link(status.text)) %>
-	 
+    <%= linkup_mentions(auto_link(status.text.to_s)) %>
+
   </div>
+
 </div>
- <div class="status">
-	<%- if has_weblink(status.text) %>
-	  <%- if is_video_site(status.text) %>
-		<%= get_vid_embed(purgeurl(status.text)) %>
-	 	 <%- else %>
-			<div class="info"><%= image_tag(create_weblink_img_url(purgeurl(status.text))) %></div>
-				<%- if extract_weblink_text(purgeurl(status.text)) %>
-				<div class="text">	 <%= extract_weblink_text(purgeurl(status.text)) %> 
-					</div><%- end %>
-		
-			
-	  	<%- end %>	
+<%- if has_weblink(status.text) %> <div style="float: left; width:40%; display:block"> <%= image_tag(create_weblink_img_url(purgeurl(status.text.to_s))) %> </div> <div style="float: left; width:60%; display:block"><b> <%= extract_weblink_title(purgeurl(status.text.to_s)) %> </b><br><%= extract_weblink_text(purgeurl(status.text.to_s)) %> </div>
 	<%- end %>
-</div>
