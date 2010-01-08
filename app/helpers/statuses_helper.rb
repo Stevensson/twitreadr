@@ -68,6 +68,7 @@ module StatusesHelper
       the_vid = youtube_client.video_by(yt_vid)
       vid_html = the_vid.embed_html
       vid_html
+    rescue
   end
 
   #
@@ -83,8 +84,23 @@ module StatusesHelper
   #
   # -------------- here are the URL methods
 
-
-  def create_weblink_img_url(statustext)
+#for websnapr
+    def create_weblink_img_url(statustext)
+      # creates URL to be placed in image tag for display of site preview
+      url = statustext
+      imgurl = ""
+      if url.match /(http:\/\/www\.)/
+       shortlink = url
+        imgurl = "http://images.websnapr.com/?size=S&key=I8uCtJ7k0CN8&url=#{shortlink}"
+        else
+          shortlink = url
+          imgurl = "http://images.websnapr.com/?size=S&key=I8uCtJ7k0CN8&url=#{shortlink}"
+      end
+      imgurl
+    end
+    
+# for shrinktheweb
+  def create_weblink_img_url_1(statustext)
     # creates URL to be placed in image tag for display of site preview
     url = statustext
     imgurl = ""
@@ -178,6 +194,14 @@ module StatusesHelper
        TRUE
       when /(http:\/\/digs\.by\/\w*)/
        TRUE
+      when /(http:\/\/is\.gd\/\w*)/
+       TRUE
+      when /(http:\/\/tinyurl\.com\/\w*)/
+       TRUE
+      when /(http:\/\/goo\.gl\/\w*)/
+       TRUE
+      when /(http:\/\/tr\.im\/\w*)/
+       TRUE
       else
        FALSE
     end
@@ -188,6 +212,10 @@ module StatusesHelper
     req = Crack::JSON.parse(Net::HTTP.get(url))
     deshurl = req['url']
     deshurl
+    rescue OpenURI::HTTPError
+      logger.error("Error at remote page")
+      deshurl = 'http://www.google.com'
+      deshurl
   end    
 
     

@@ -29,5 +29,5 @@
   </div>
 
 </div>
-<%- if has_weblink(status.text) %> <div style="float: left; width:40%; display:block"> <%= image_tag(create_weblink_img_url(purgeurl(status.text.to_s))) %> </div> <div style="float: left; width:60%; display:block"><b> <%= extract_weblink_title(purgeurl(status.text.to_s)) %> </b><br><%= extract_weblink_text(purgeurl(status.text.to_s)) %> </div>
-	<%- end %>
+<%- if has_weblink(status.text) %> <%- if !is_video_site(status.text) %> <div style="float: left; width:40%; display:block"> <%= image_tag(create_weblink_img_url(purgeurl(status.text.to_s))) %> </div> <div style="float: left; width:60%; display:block"><b> <%= extract_weblink_title(purgeurl(status.text.to_s)) %> </b><br><%= extract_weblink_text(purgeurl(status.text.to_s)) %> </div>
+<%- end %> <%- if is_video_site(status.text) %><%= get_vid_embed(purgeurl(status.text)) %>	<%- end %><%- end %>
