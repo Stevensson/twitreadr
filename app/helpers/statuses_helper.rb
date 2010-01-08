@@ -85,7 +85,7 @@ module StatusesHelper
   # -------------- here are the URL methods
 
 #for websnapr
-    def create_weblink_img_url(statustext)
+    def create_weblink_img_url_1(statustext)
       # creates URL to be placed in image tag for display of site preview
       url = statustext
       imgurl = ""
@@ -100,7 +100,7 @@ module StatusesHelper
     end
     
 # for shrinktheweb
-  def create_weblink_img_url_1(statustext)
+  def create_weblink_img_url(statustext)
     # creates URL to be placed in image tag for display of site preview
     url = statustext
     imgurl = ""
